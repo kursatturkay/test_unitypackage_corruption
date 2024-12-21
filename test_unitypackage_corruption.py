@@ -3,8 +3,8 @@ import shutil
 import os
 import tarfile
 
-error_report = [] 
-temp_unzipped_files = []
+error_report = []  
+temp_unzipped_files = []  
 
 def extract_gzip(gzip_path):
     """Extracts a GZIP file and returns the extracted file path."""
@@ -14,12 +14,12 @@ def extract_gzip(gzip_path):
             with open(extracted_file, 'wb') as f_out:
                 shutil.copyfileobj(f_in, f_out)
         print(f"Successfully extracted GZIP: {gzip_path} -> {extracted_file}")
-        temp_unzipped_files.append(extracted_file)  # Unzipped dosyayı listeye ekle
+        temp_unzipped_files.append(extracted_file)  
         return extracted_file
     except Exception as e:
         print(f"Error extracting {gzip_path}: {e}")
         error_report.append(gzip_path)
-        temp_unzipped_files.append(gzip_path + ".unzipped")  # Hata alırsa da kaydet
+        temp_unzipped_files.append(gzip_path + ".unzipped")  
         return None
 
 def check_tar(unitypackage_path):
@@ -126,6 +126,6 @@ def report_errors():
 if __name__ == "__main__":
     current_directory = os.path.dirname(os.path.realpath(__file__))
     check_all_unitypackages_in_directory(current_directory)
-    clean_up_unzipped_files()  # İşlem bittikten sonra tüm .unzipped dosyalarını sil
-    move_corrupted_files()  # Bozuk dosyaları 'corrupted' dizinine taşı
+    clean_up_unzipped_files()  
+    move_corrupted_files()  
     report_errors()
