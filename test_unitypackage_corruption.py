@@ -3,8 +3,8 @@ import shutil
 import os
 import tarfile
 
-error_report = []  # Hata olan dosyaların kaydedileceği liste
-temp_unzipped_files = []  # Tüm .unzipped dosyalarını toplamak için liste
+error_report = [] 
+temp_unzipped_files = []
 
 def extract_gzip(gzip_path):
     """Extracts a GZIP file and returns the extracted file path."""
